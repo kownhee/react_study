@@ -1,25 +1,36 @@
 import logo from './logo.svg';
 import './App.css';
+import { Component } from 'react';
+import TOC from './components/TOC'
+import Subject from './components/Subject'
+import Content from './components/Content'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+
+class App extends Component {
+ constructor(props)
+ {
+   super(props);
+   this.state = {
+    subject:{title:'PKH', sub:'web is good'},
+    contents:[
+      {id:1 , title:'HTML', desc :'HTML is for information'},
+      {id:2 , title:'CSS', dsec :'Css if for dessign'},
+      {id:3 , title :'JavaScript', dsec:'JavaScript is for inters' }
+    ]
+   }
+ }
+
+  render(){
+    return (
+      <div className="App">
+        <Subject
+          title={this.state.subject.title}
+          sub={this.state.subject.sub}/>
+        <TOC data={this.state.contents}/>
+        <Content/>
+      </div>
+    );
+  }
 }
-
 export default App;
